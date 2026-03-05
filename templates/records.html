@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mileage and Fuel Records</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/DataTables/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/DataTables/1.10.19/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <h1>Mileage and Fuel Records</h1>
+    <table id="recordsTable" style="width:100%">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Mileage (km)</th>
+                <th>Fuel Used (L)</th>
+                <th>Fuel Cost ($)</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Records will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#recordsTable').DataTable({
+                // Options for sorting and filtering can be added here
+            });
+        });
+    </script>
+</body>
+</html>
