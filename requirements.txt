@@ -1,0 +1,8 @@
+Flask
+SQLAlchemy
+Pillow
+pytesseract
+python-dotenv
+requests
+pandas
+# Add other necessary packages here for your web application, image processing, OCR, database management, and data analysis
