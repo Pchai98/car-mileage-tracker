@@ -1,8 +1,9 @@
-Flask
-SQLAlchemy
-Pillow
-pytesseract
-python-dotenv
-requests
-pandas
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.5
+SQLAlchemy==2.0.19
+Pillow==10.0.0
+pytesseract==0.3.10
+opencv-python==4.8.0.74
+requests==2.31.0
+python-dotenv==1.0.0
 # Add other necessary packages here for your web application, image processing, OCR, database management, and data analysis

@@ -1,1 +1,46 @@
-import sqlite3\n\n# Connect to SQLite database\ndb_name = 'car_mileage_tracker.db'\nconn = sqlite3.connect(db_name)\ncursor = conn.cursor()\n\n# Create tables\ncursor.execute('''CREATE TABLE IF NOT EXISTS cars (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    make TEXT NOT NULL,\n    model TEXT NOT NULL,\n    year INTEGER NOT NULL\n)''')\n\ncursor.execute('''CREATE TABLE IF NOT EXISTS mileage (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    car_id INTEGER,\n    date TEXT NOT NULL,\n    miles INTEGER NOT NULL,\n    FOREIGN KEY (car_id) REFERENCES cars (id)\n)''')\n\n# Initialize database with sample data\ncars = [\n    ('Toyota', 'Camry', 2020),\n    ('Honda', 'Accord', 2021),\n    ('Ford', 'Focus', 2019)\n]\n\ncursor.executemany('''INSERT INTO cars (make, model, year) VALUES (?, ?, ?)''', cars)\n\n# Sample mileage data\nmileage_data = [\n    (1, '2026-03-01', 150),\n    (1, '2026-03-02', 200),\n    (2, '2026-03-03', 175)\n]\n\ncursor.executemany('''INSERT INTO mileage (car_id, date, miles) VALUES (?, ?, ?)''', mileage_data)\n\n# Commit changes and close the connection\nconn.commit()\nconn.close()\n\nprint('Database initialized with sample data.')\n
+import sqlite3
+
+# Connect to SQLite database
+db_name = 'car_mileage_tracker.db'
+conn = sqlite3.connect(db_name)
+cursor = conn.cursor()
+
+# Create tables
+cursor.execute('''CREATE TABLE IF NOT EXISTS cars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    make TEXT NOT NULL,
+    model TEXT NOT NULL,
+    year INTEGER NOT NULL
+)''')
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS mileage (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    car_id INTEGER,
+    date TEXT NOT NULL,
+    miles INTEGER NOT NULL,
+    FOREIGN KEY (car_id) REFERENCES cars (id)
+)''')
+
+# Initialize database with sample data
+cars = [
+    ('Toyota', 'Camry', 2020),
+    ('Honda', 'Accord', 2021),
+    ('Ford', 'Focus', 2019)
+]
+
+cursor.executemany('''INSERT INTO cars (make, model, year) VALUES (?, ?, ?)''', cars)
+
+# Sample mileage data
+mileage_data = [
+    (1, '2026-03-01', 150),
+    (1, '2026-03-02', 200),
+    (2, '2026-03-03', 175)
+]
+
+cursor.executemany('''INSERT INTO mileage (car_id, date, miles) VALUES (?, ?, ?)''', mileage_data)
+
+# Commit changes and close the connection
+conn.commit()
+conn.close()
+
+print('Database initialized with sample data.')
