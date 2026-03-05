@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    image: flask:latest
+    container_name: car_mileage_tracker_web
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+
+  db:
+    image: postgres:latest
+    container_name: car_mileage_tracker_db
+    environment:
+      - POSTGRES_USER=yourusername
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=cardatabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
